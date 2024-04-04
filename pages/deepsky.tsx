@@ -12,9 +12,10 @@ import type { ImageProps } from "../utils/types";
 import { useLastViewedPhoto } from "../utils/useLastViewedPhoto";
 
 
-var content_folder="Inauguration"
+var content_folder="deepsky"
+var folder_title="Deep Sky"
 
-const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
+const deepsky: NextPage = ({ images }: { images: ImageProps[] }) => {
   const router = useRouter();
   const { photoId } = router.query;
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
@@ -46,13 +47,9 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
         <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
           <div className="after:content relative mb-5 flex h-auto flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-black px-6 pb-16 pt-64 text-center text-white shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
           <Logo/>
-          <p className="text-6xl font-extrabold">Gallery</p>
-          <Link href="/deepsky" className="transition-all duration-150 ease-in-out text-cyan-600 active:text-blue-600 hover:translate-x-1"><button>Deep Sky</button></Link>
-          <Link href="/moon" className="transition-all duration-150 ease-in-out text-cyan-600 active:text-blue-600 hover:translate-x-1"><button>The Moon</button></Link>
-          <Link href="/jupiter" className="transition-all duration-150 ease-in-out text-cyan-600 active:text-blue-600 hover:translate-x-1"><button>Jupyter and its moons</button></Link>
-          <Link href="/misc" className="transition-all duration-150 ease-in-out text-cyan-600 active:text-blue-600 hover:translate-x-1"><button>Miscellaneous</button></Link>
-          <p className="italic">Dr. Nandivada Ratnashree Observatory was Inaugurated on 2nd April 2024 
-          on the roof of School of Physics at the University of Hyderabad.Checkout the full story <a href="https://herald.uohyd.ac.in/inauguration-of-the-observatory/" className="text-blue-700">here</a>. These are some of the snapshots of those moments.</p>
+          <h1>{folder_title}</h1>
+            <Link href="/"><button type="button" className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Back to home</button>
+            </Link>
           </div>
           {images.map(({ id, public_id, format, blurDataUrl }) => (
             <Link
@@ -88,11 +85,11 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   );
 };
 
-export default Home;
+export default deepsky;
 
 export async function getStaticProps() {
   const results = await cloudinary.v2.search
-    // .expression(`folder:${process.env.CLOUDINARY_FOLDER_1}/*`)
+    // .expression(`folder:${process.env.CLOUDINARY_FOLDER_2}/*`)
     .expression(`folder:${content_folder}/*`)
     .sort_by("public_id", "desc")
     .max_results(400)
