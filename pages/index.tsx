@@ -45,14 +45,15 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
         )}
         <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
           <div className="after:content relative mb-5 flex h-auto flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-black px-6 pb-16 pt-64 text-center text-white shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
-          <Logo/>
-          <p className="text-6xl font-extrabold">Gallery</p>
-          <Link href="/deepsky" className="transition-all duration-150 ease-in-out text-cyan-600 active:text-blue-600 hover:translate-x-1"><button>Deep Sky</button></Link>
-          <Link href="/moon" className="transition-all duration-150 ease-in-out text-cyan-600 active:text-blue-600 hover:translate-x-1"><button>The Moon</button></Link>
-          <Link href="/jupiter" className="transition-all duration-150 ease-in-out text-cyan-600 active:text-blue-600 hover:translate-x-1"><button>Jupyter and its moons</button></Link>
-          <Link href="/misc" className="transition-all duration-150 ease-in-out text-cyan-600 active:text-blue-600 hover:translate-x-1"><button>Miscellaneous</button></Link>
-          <p className="italic">Dr. Nandivada Ratnashree Observatory was Inaugurated on 2nd April 2024 
-          on the roof of School of Physics at the University of Hyderabad.Checkout the full story <a href="https://herald.uohyd.ac.in/inauguration-of-the-observatory/" className="text-blue-700">here</a>. These are some of the snapshots of those moments.</p>
+            <Logo/>
+            <p className="text-6xl font-extrabold">Gallery</p>
+            <a href='https://zenith-astro.vercel.app' className="hover:text-red-500 font-extrabold">⬅️Back to Zenith Home</a>
+            <Link href="/deepsky" className="transition-all duration-150 ease-in-out text-cyan-600 active:text-blue-600 hover:translate-x-1"><button>Deep Sky</button></Link>
+            <Link href="/moon" className="transition-all duration-150 ease-in-out text-cyan-600 active:text-blue-600 hover:translate-x-1"><button>The Moon</button></Link>
+            <Link href="/jupiter" className="transition-all duration-150 ease-in-out text-cyan-600 active:text-blue-600 hover:translate-x-1"><button>Jupyter and its moons</button></Link>
+            <Link href="/misc" className="transition-all duration-150 ease-in-out text-cyan-600 active:text-blue-600 hover:translate-x-1"><button>Miscellaneous</button></Link>
+            <p className="italic">Dr. Nandivada Ratnashree Observatory was Inaugurated on 2nd April 2024 
+            on the roof of School of Physics at the University of Hyderabad.Checkout the full story <a href="https://herald.uohyd.ac.in/inauguration-of-the-observatory/" className="text-blue-700">here</a>. These are some of the snapshots of those moments.</p>
           </div>
           {images.map(({ id, public_id, format, blurDataUrl }) => (
             <Link
